@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:57:32 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/01 14:25:08 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/02 02:17:33 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 #include "Contact.hpp"
 
-class   PhoneBook {
- private:
-    int     entries_;
-    Contact contacts_[8];
-
+class PhoneBook {
  public:
     PhoneBook(void);
 
-    void    AddContact(void);
-    void    SearchContact(void);
+    void AddContact(void);
+    void SearchContact(void);
+
+ private:
+    int entries_;
+    Contact contacts_[8];
 };
 
 #endif  // EX01_PHONEBOOK_HPP_

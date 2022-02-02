@@ -1,5 +1,6 @@
-NAME = tests
+NAME = ex02
 SOURCES = tests.cpp Account.cpp
+HEADERS = Account.hpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 CC = c++
@@ -10,8 +11,8 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	$(CC) -o $@ $^
 
-%.o: %.cpp
-	$(CC) -c $(CFLAGS) $?
+%.o: %.cpp $(HEADERS)
+	$(CC) -c $(CFLAGS) $<
 
 clean:
 	$(RM) $(OBJECTS)
@@ -21,4 +22,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+lint:
+	cpplint $(SOURCES) $(HEADERS)
+
+.PHONY: all clean fclean re lint

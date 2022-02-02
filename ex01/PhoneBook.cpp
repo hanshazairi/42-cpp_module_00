@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:51:13 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/01 16:48:02 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:12:28 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,30 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::getline;
 using std::isdigit;
 using std::setw;
 using std::stoi;
 
-PhoneBook::PhoneBook(void) {
-    entries_ = 0;
-}
-
-static int  IsNumber(const string num) {
+static int IsNumber(const string num) {
     for (size_t i = 0; i < num.length(); i++)
         if (!isdigit(num[i]))
-            return (0);
+            return 0;
 
-    return (1);
+    return 1;
 }
 
-void    PhoneBook::AddContact(void) {
-    int i;
+PhoneBook::PhoneBook(void) : entries_(0) {}
 
-    i = entries_++ % 8;
-    contacts_[i].RemoveContact();
-    contacts_[i].CreateContact();
+void PhoneBook::AddContact(void) {
+    int i = entries_++ % 8;
+    contacts_[i].UpdateContact();
     cout << endl;
 }
 
-void    PhoneBook::SearchContact(void) {
-    int     i;
-    string  idx;
+void PhoneBook::SearchContact(void) {
+    int i;
+    string idx;
 
     cout << "+----------+----------+----------+----------+" << endl;
     cout << "|    index |  f. name |  l. name | nickname |" << endl;
@@ -56,10 +52,9 @@ void    PhoneBook::SearchContact(void) {
     for (int i = 0; i < 8; i++) {
         cout << "|";
         cout << setw(10) << i + 1 << "|";
-        cout << setw(10) << contacts_[i].GetFirstNameSummary() << "|";
-        cout << setw(10) << contacts_[i].GetLastNameSummary() << "|";
-        cout << setw(10) << contacts_[i].GetNicknameSummary() << "|";
-        cout << endl;
+        cout << setw(10) << contacts_[i].get_first_name_summary() << "|";
+        cout << setw(10) << contacts_[i].get_last_name_summary() << "|";
+        cout << setw(10) << contacts_[i].get_nickname_summary() << "|" << endl;
         cout << "+----------+----------+----------+----------+" << endl;
     }
 
@@ -79,13 +74,13 @@ void    PhoneBook::SearchContact(void) {
         i = stoi(idx);
 
         if (i >= 1 && i <= 8) {
-            cout << "First Name: " << contacts_[i - 1].GetFirstName() << endl;
-            cout << "Last Name: " << contacts_[i - 1].GetLastName() << endl;
-            cout << "Nickname: " << contacts_[i - 1].GetNickname() << endl;
-            cout << "Phone Number: " << contacts_[i - 1].GetPhoneNumber() \
+            cout << "First Name: " << contacts_[i - 1].get_first_name() << endl;
+            cout << "Last Name: " << contacts_[i - 1].get_last_name() << endl;
+            cout << "Nickname: " << contacts_[i - 1].get_nickname() << endl;
+            cout << "Phone Number: " << contacts_[i - 1].get_phone_number() \
                     << endl;
-            cout << "Darkest Secret: " << contacts_[i - 1].GetDarkestSecret() \
-                    << endl;
+            cout << "Darkest Secret: " \
+                    << contacts_[i - 1].get_darkest_secret() << endl;
             cout << endl;
         }
     }

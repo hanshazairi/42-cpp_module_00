@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:23:45 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/01 19:38:53 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:20:54 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
 int Account::getNbAccounts(void) {
-    return (_nbAccounts);
+    return _nbAccounts;
 }
 
 int Account::getTotalAmount(void) {
-    return (_totalAmount);
+    return _totalAmount;
 }
 
 int Account::getNbDeposits(void) {
-    return (_totalNbDeposits);
+    return _totalNbDeposits;
 }
 
 int Account::getNbWithdrawals(void) {
-    return (_totalNbWithdrawals);
+    return _totalNbWithdrawals;
 }
 
-void    Account::displayAccountsInfos(void) {
+void Account::displayAccountsInfos(void) {
     _displayTimestamp();
     cout << "accounts:" << _nbAccounts << ";";
     cout << "total:" << _totalAmount << ";";
@@ -64,7 +64,7 @@ Account::~Account(void) {
     cout << "closed" << endl;
 }
 
-void    Account::makeDeposit(int deposit) {
+void Account::makeDeposit(int deposit) {
     _totalAmount += deposit;
     ++_totalNbDeposits;
     _amount += deposit;
@@ -74,13 +74,11 @@ void    Account::makeDeposit(int deposit) {
     cout << "p_amount:" << _amount - deposit << ";";
     cout << "deposit:" << deposit << ";";
     cout << "amount:" << _amount << ";";
-    cout << "nb_deposits:" << _nbDeposits <<  endl;
+    cout << "nb_deposits:" << _nbDeposits << endl;
 }
 
-bool    Account::makeWithdrawal(int withdrawal) {
-    bool    success;
-
-    success = withdrawal <= _amount;
+bool Account::makeWithdrawal(int withdrawal) {
+    bool success = withdrawal <= _amount;
     _displayTimestamp();
 
     if (success) {
@@ -92,21 +90,21 @@ bool    Account::makeWithdrawal(int withdrawal) {
         cout << "p_amount:" << _amount + withdrawal << ";";
         cout << "withdrawal:" << withdrawal << ";";
         cout << "amount:" << _amount << ";";
-        cout << "nb_withdrawals:" << _nbDeposits <<  endl;
+        cout << "nb_withdrawals:" << _nbDeposits << endl;
     } else {
         cout << "index:" << _accountIndex << ";";
         cout << "p_amount:" << _amount << ";";
-        cout << "withdrawal:refused" <<  endl;
+        cout << "withdrawal:refused" << endl;
     }
 
-    return (success);
+    return success;
 }
 
 int Account::checkAmount(void) const {
-    return (_amount);
+    return _amount;
 }
 
-void    Account::displayStatus(void) const {
+void Account::displayStatus(void) const {
     _displayTimestamp();
     cout << "index:" << _accountIndex << ";";
     cout << "amount:" << _amount << ";";
@@ -114,10 +112,10 @@ void    Account::displayStatus(void) const {
     cout << "withdrawals:" << _nbWithdrawals << endl;
 }
 
-void    Account::_displayTimestamp(void) {
-    char        ts[18];
-    time_t      now;
-    struct tm   tm;
+void Account::_displayTimestamp(void) {
+    char ts[18];
+    time_t now;
+    struct tm tm;
 
     time(&now);
     localtime_r(&now, &tm);

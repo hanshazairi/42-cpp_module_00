@@ -11,7 +11,7 @@ $(NAME): $(OBJECTS)
 	$(CC) -o $@ $^
 
 %.o: %.cpp
-	$(CC) -c $(CFLAGS) $?
+	$(CC) -c $(CFLAGS) $<
 
 clean:
 	$(RM) $(OBJECTS)
@@ -21,4 +21,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+lint:
+	cpplint $(SOURCES)
+
+.PHONY: all clean fclean re lint

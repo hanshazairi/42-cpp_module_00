@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:10:01 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/01 16:44:24 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:04:15 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 
 using std::cin;
 using std::cout;
+using std::getline;
 using std::string;
 
 int main(void) {
-    string      cmd;
-    PhoneBook   phonebook;
+    string cmd;
+    PhoneBook phonebook;
 
     while (1) {
         cout << "[ADD, SEARCH, EXIT]: ";
@@ -38,5 +39,6 @@ int main(void) {
         else if (cmd == "SEARCH")
             phonebook.SearchContact();
     }
-    return (0);
+
+    return 0;
 }

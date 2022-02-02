@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 23:48:47 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/01 17:05:11 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:15:12 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 using std::cout;
 using std::endl;
+using std::toupper;
 
 int main(int argc, char **argv) {
     if (argc == 1) {
@@ -24,6 +25,8 @@ int main(int argc, char **argv) {
             for (int j = 0; argv[i][j]; j++)
                 cout << static_cast<char>(toupper(argv[i][j]));
     }
+
     cout << endl;
-    return (0);
+
+    return 0;
 }

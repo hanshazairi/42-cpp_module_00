@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:51:13 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/02 13:12:28 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/07 19:29:30 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ using std::isdigit;
 using std::setw;
 using std::stoi;
 
-static int IsNumber(const string num) {
+static int is_number(const string num) {
     for (size_t i = 0; i < num.length(); i++)
         if (!isdigit(num[i]))
             return 0;
@@ -41,7 +41,7 @@ void PhoneBook::AddContact(void) {
     cout << endl;
 }
 
-void PhoneBook::SearchContact(void) {
+void PhoneBook::SearchContact(void) const {
     int i;
     string idx;
 
@@ -68,7 +68,7 @@ void PhoneBook::SearchContact(void) {
         if (cin.eof())
             break;
 
-        if (idx.empty() || !IsNumber(idx))
+        if (idx.empty() || !is_number(idx))
             continue;
 
         i = stoi(idx);
@@ -77,9 +77,9 @@ void PhoneBook::SearchContact(void) {
             cout << "First Name: " << contacts_[i - 1].get_first_name() << endl;
             cout << "Last Name: " << contacts_[i - 1].get_last_name() << endl;
             cout << "Nickname: " << contacts_[i - 1].get_nickname() << endl;
-            cout << "Phone Number: " << contacts_[i - 1].get_phone_number() \
+            cout << "Phone Number: " << contacts_[i - 1].get_phone_number()
                     << endl;
-            cout << "Darkest Secret: " \
+            cout << "Darkest Secret: "
                     << contacts_[i - 1].get_darkest_secret() << endl;
             cout << endl;
         }

@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:23:45 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/02 13:20:54 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/07 20:00:39 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
+
+Account::Account(int initial_deposit) {
+    _accountIndex = _nbAccounts++;
+    _amount = initial_deposit;
+    _totalAmount += initial_deposit;
+    _displayTimestamp();
+    cout << "index:" << _accountIndex << ";";
+    cout << "amount:" << _amount << ";";
+    cout << "created" << endl;
+}
+
+Account::~Account(void) {
+    _displayTimestamp();
+    cout << "index:" << _accountIndex << ";";
+    cout << "amount:" << _amount << ";";
+    cout << "closed" << endl;
+}
 
 int Account::getNbAccounts(void) {
     return _nbAccounts;
@@ -45,23 +62,6 @@ void Account::displayAccountsInfos(void) {
     cout << "total:" << _totalAmount << ";";
     cout << "deposits:" << _totalNbDeposits << ";";
     cout << "withdrawals:" << _totalNbWithdrawals << endl;
-}
-
-Account::Account(int initial_deposit) {
-    _accountIndex = _nbAccounts++;
-    _amount = initial_deposit;
-    _totalAmount += initial_deposit;
-    _displayTimestamp();
-    cout << "index:" << _accountIndex << ";";
-    cout << "amount:" << _amount << ";";
-    cout << "created" << endl;
-}
-
-Account::~Account(void) {
-    _displayTimestamp();
-    cout << "index:" << _accountIndex << ";";
-    cout << "amount:" << _amount << ";";
-    cout << "closed" << endl;
 }
 
 void Account::makeDeposit(int deposit) {

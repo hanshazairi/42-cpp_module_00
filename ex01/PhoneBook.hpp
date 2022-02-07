@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:57:32 by hbaddrul          #+#    #+#             */
-/*   Updated: 2022/02/02 02:17:33 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2022/02/07 19:29:33 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class PhoneBook {
     PhoneBook(void);
 
     void AddContact(void);
-    void SearchContact(void);
+    void SearchContact(void) const;
 
  private:
     int entries_;

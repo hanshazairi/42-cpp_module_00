@@ -23,6 +23,6 @@ fclean: clean
 re: fclean all
 
 lint:
-	cpplint $(SOURCES) $(HEADERS)
+	cpplint --filter=-legal/copyright Account.cpp
 
 .PHONY: all clean fclean re lint

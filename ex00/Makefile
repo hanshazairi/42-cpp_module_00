@@ -22,6 +22,6 @@ fclean: clean
 re: fclean all
 
 lint:
-	cpplint $(SOURCES)
+	cpplint --filter=-legal/copyright $(SOURCES)
 
 .PHONY: all clean fclean re lint
